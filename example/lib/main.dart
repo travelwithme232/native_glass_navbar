@@ -3,6 +3,7 @@ import 'action_button_counter.dart';
 import 'basic_two_tabs.dart';
 import 'custom_color_tabs.dart';
 import 'demo_page.dart';
+import 'fallback_demo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -80,26 +81,32 @@ class HomePage extends StatelessWidget {
       _ExampleItem(
         title: 'Full Demo',
         description: 'Interactive configuration of tabs and action button',
-        icon: Icons.settings_applications,
+        icon: Icons.settings_applications_rounded,
         page: const DemoPage(),
       ),
       _ExampleItem(
         title: 'Basic 2 Tabs',
         description: 'Simple example with 2 tabs',
-        icon: Icons.looks_two,
+        icon: Icons.looks_two_rounded,
         page: const BasicTwoTabsApp(),
       ),
       _ExampleItem(
         title: 'Action Button',
         description: '3 tabs with a central action button',
-        icon: Icons.add_circle,
+        icon: Icons.add_circle_rounded,
         page: const ActionButtonCounterApp(),
       ),
       _ExampleItem(
         title: 'Custom Color',
         description: 'Example with custom tint color',
-        icon: Icons.color_lens,
+        icon: Icons.color_lens_rounded,
         page: const CustomColorTabsApp(),
+      ),
+      _ExampleItem(
+        title: 'Fallback Demo',
+        description: 'Example with Material fallback',
+        icon: Icons.alt_route_rounded,
+        page: const FallbackDemo(),
       ),
     ];
 
