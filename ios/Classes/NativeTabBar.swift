@@ -48,9 +48,10 @@ struct TabBarConfig: Equatable {
 	var actionButtonSymbol: String = ""  // Default to empty
 	var tintColor: UIColor = .systemBlue
 	var selectedIndex: Int = 0
-
+	var isDark: Bool = false
 	init(from dict: [String: Any]?) {
 		guard let dict = dict else { return }
+		if let isDark = dict["isDark"] as? Bool { self.isDark = isDark }
 		if let l = dict["labels"] as? [String] { self.labels = l }
 		if let s = dict["symbols"] as? [String] { self.symbols = s }
 
@@ -106,6 +107,7 @@ class LiquidGlassTabBarController: UITabBarController, UITabBarControllerDelegat
 
 		configureAppearance()
 		performFullRebuild()
+		overrideUserInterfaceStyle = config.isDark ? .dark : .light
 
 		channel.setMethodCallHandler { [weak self] call, result in
 			self?.handle(call, result: result)
