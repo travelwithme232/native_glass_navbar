@@ -107,7 +107,7 @@ class LiquidGlassTabBarController: UITabBarController, UITabBarControllerDelegat
 
 		configureAppearance()
 		performFullRebuild()
-		overrideUserInterfaceStyle = config.isDark ? .dark : .light
+		
 
 		channel.setMethodCallHandler { [weak self] call, result in
 			self?.handle(call, result: result)
@@ -210,7 +210,7 @@ class LiquidGlassTabBarController: UITabBarController, UITabBarControllerDelegat
 			actionVC.tabBarItem = item
 			controllers.append(actionVC)
 		}
-
+		overrideUserInterfaceStyle = config.isDark ? .dark : .light
 		self.setViewControllers(controllers, animated: false)
 		updateSelectionAndColors()
 	}
