@@ -107,7 +107,7 @@ class LiquidGlassTabBarController: UITabBarController, UITabBarControllerDelegat
 
 		configureAppearance()
 		performFullRebuild()
-		
+		overrideUserInterfaceStyle = config.isDark ? .dark : .light
 
 		channel.setMethodCallHandler { [weak self] call, result in
 			self?.handle(call, result: result)
@@ -162,7 +162,7 @@ class LiquidGlassTabBarController: UITabBarController, UITabBarControllerDelegat
 					updateActionSymbolInPlace()
 				}
 			}
-
+			overrideUserInterfaceStyle = config.isDark ? .dark : .light
 			result(nil)
 		} else {
 			result(FlutterMethodNotImplemented)
@@ -180,7 +180,6 @@ class LiquidGlassTabBarController: UITabBarController, UITabBarControllerDelegat
 	}
 
 	private func performFullRebuild() {
-		overrideUserInterfaceStyle = config.isDark ? .dark : .light
 		var controllers: [UIViewController] = []
 		let count = max(config.labels.count, config.symbols.count)
 
@@ -211,9 +210,9 @@ class LiquidGlassTabBarController: UITabBarController, UITabBarControllerDelegat
 			actionVC.tabBarItem = item
 			controllers.append(actionVC)
 		}
-		
 		self.setViewControllers(controllers, animated: false)
 		updateSelectionAndColors()
+
 	}
 
 	private func updateSelectionAndColors() {
