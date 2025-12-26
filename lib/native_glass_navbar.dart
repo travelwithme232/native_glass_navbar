@@ -122,6 +122,12 @@ class _NativeGlassNavBarState extends State<NativeGlassNavBar> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _updateNativeView();
+  }
+
+  @override
   void didUpdateWidget(NativeGlassNavBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     _updateNativeView();
