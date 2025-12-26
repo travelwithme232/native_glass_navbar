@@ -180,6 +180,7 @@ class LiquidGlassTabBarController: UITabBarController, UITabBarControllerDelegat
 	}
 
 	private func performFullRebuild() {
+		overrideUserInterfaceStyle = config.isDark ? .dark : .light
 		var controllers: [UIViewController] = []
 		let count = max(config.labels.count, config.symbols.count)
 
@@ -210,7 +211,7 @@ class LiquidGlassTabBarController: UITabBarController, UITabBarControllerDelegat
 			actionVC.tabBarItem = item
 			controllers.append(actionVC)
 		}
-		overrideUserInterfaceStyle = config.isDark ? .dark : .light
+		
 		self.setViewControllers(controllers, animated: false)
 		updateSelectionAndColors()
 	}
